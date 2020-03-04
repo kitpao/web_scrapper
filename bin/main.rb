@@ -5,7 +5,25 @@ require 'httparty'
 require 'byebug'
 require 'date'
 
-
+puts "Welcome! This program will inform you when the exchange rate between Mexican pesos and Dollars are at the best rate!"
+check_urgency = true
+while check_urgency
+  puts "Please type a number and press enter to see how fast would you like to exchange your money:"
+  puts "1 - Very fast - Will notify you at the first good news there are, based on the trend from the last 4 days"
+  puts "2 - Fast - Will notify you when the trending is nice based on the last 7 days"
+  puts "3 - Normal - Will notify you when the trending has been stable for the last 2 weeks"
+  puts "4 - Whenever it's stable - Will notify you when the trending has been stable for the last month"
+  begin
+    input = gets.chomp.match("[1-4]").string
+  rescue
+    puts "REMEMBER TO type a number from 1 to 4"
+    puts "_____________________________________"
+    sleep(1.2)
+  else
+    puts "all okay"
+    check_urgency = false
+  end
+end
 
 def scraper
   stats = []
