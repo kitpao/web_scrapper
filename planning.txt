@@ -1,13 +1,12 @@
 general flow:
 
-	- go to webpage www.volaris.com
-	- welcome! please give from where to where you would like to travel and this program will tell you when
-	  you can fly at the cheapest price in less than 6 months!
+	- go to webpage https://www.eldolar.info/es-MX/mexico/dia/20200303
+	- ask user how urgent is it for him to make the exchange (what varies is how many days of data will be taken into account, if you select urgent, you will have a notification at the first good news there are) (very urgent, urgent, normal, can wait)
+	- grab the best price to sell, the best price to buy and the average for today
+	- do the same from yesterday, the day before, etc (up to 4, 7, 15, 30 days)
+	- get the trend from various days
+	- compare buy/sell against average today
+	- if favorable send a notification with Twilio API
+
+
 	
-	- fill formulary (from where to where)
-	- use Mechanize to send data to volaris
-	- use nokogiri to retrieve the listings
-	- use corresponding classes to  target valid info
-	- go from page to page until 6 months are covered
-	- order the hash data from cheapest to expensive
-	- give the first results
