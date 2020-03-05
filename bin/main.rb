@@ -68,6 +68,9 @@ def scraper(day_limit)
   if notify == 0
     time = Time.new
     puts "----There are no news now at " + time.inspect + " comparing against the data of the last #{day_limit} days----"
+    puts "Current dollar price for selling: #{stats [0][0]}"
+    puts "Current dollar price for buying: #{stats [0][1]}"
+    puts "Average price: #{stats [0][2]}"
   end
   #result
   stats
