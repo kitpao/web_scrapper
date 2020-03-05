@@ -1,6 +1,8 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem 'rubocop'
-gem 'httparty'
+source 'https://rubygems.org'
+
 gem 'byebug'
+gem 'httparty'
 gem 'nokogiri'
+gem 'rubocop'

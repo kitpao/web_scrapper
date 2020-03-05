@@ -13,7 +13,7 @@ require_relative '../lib/program_methods'
 
 program = Program.new()
 
-#welcome and setup
+# welcome and setup
 puts "Welcome! This program will inform you when the exchange rate between Mexican pesos and Dollars are at the best! it will check every hour"
 puts "_______________________________________________________________"
 sleep (1)
@@ -34,7 +34,7 @@ while check_urgency
     puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
     sleep(1.2)
   else
-    day_limit = choose_days(input)
+    day_limit = choose_days(input, 0)
     check_urgency = false
   end
 end
