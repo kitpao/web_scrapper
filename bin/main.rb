@@ -2,10 +2,6 @@
 
 # frozen_string_literal: true
 
-require 'nokogiri'
-require 'httparty'
-require 'byebug'
-require 'date'
 require 'timeout'
 require_relative '../lib/extra_methods'
 require_relative '../lib/program_methods'

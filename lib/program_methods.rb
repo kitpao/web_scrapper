@@ -89,6 +89,11 @@ class Program
   public
 
   def run_program(day_limit)
+    # This requires were necessary here so the tests could execute
+    require 'date'
+    require 'nokogiri'
+    require 'httparty'
+
     stats = scraper(day_limit)
     notify_results(stats, day_limit)
   end
