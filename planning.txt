@@ -7,7 +7,7 @@ general flow:
 	- [x] do the same from yesterday, the day before, etc (up to 4, 7, 15, 30 days)
 	- [x] get the trend from various days
 	- [x] compare buy/sell against average today
-	- [ ] if favorable send a notification with Twilio API
+	- [x] if favorable send a positive notification
 
 
 	
