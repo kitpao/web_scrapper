@@ -4,7 +4,6 @@ require './lib/extra_methods.rb'
 require './lib/program_methods.rb'
 
 RSpec.describe 'Web Scraper for Money exchange' do
-
   describe '#choose_days' do
     it 'when there is no valid input' do
       input = 'q'
@@ -20,7 +19,7 @@ RSpec.describe 'Web Scraper for Money exchange' do
   end
 
   describe '#run_program' do
-    test_program = Program.new()
+    test_program = Program.new
 
     it 'when the limit is low' do
       day_limit = 4
