@@ -2,28 +2,24 @@
 
 class Program
   attr_reader :day_limit
-  attr_reader :stats
   def initialize
-    @stats = []
-    @day_counter = 0
     @day_limit = day_limit
   end
 
-  def run_program(day_limit)
-    while @day_counter < day_limit
+  def scraper(day_limit)
+    day_counter = 0
+    stats = []
+    while day_counter < day_limit
       #get day for URLs
-      date_string = Date.today-@day_counter
-      #convert
+      date_string = Date.today-day_counter
+      #format day for url
       formated_date = date_string.to_s.match /(\d+)-(\d+)-(\d+)/
       ready_date = formated_date[1]+formated_date[2]+formated_date[3]
-      @day_counter += 1
-
-
+      day_counter += 1
       #specify route
       url = 'https://www.eldolar.info/es-MX/mexico/dia/' + ready_date
       unparsed = HTTParty.get(url)
       parsed = Nokogiri::HTML(unparsed.body)
-
       #retrieve data
       this_day = []
       best_to_sell = parsed.css('[title="Mejor compra"]').text.to_f
@@ -34,8 +30,13 @@ class Program
       this_day[2] = average
       stats << this_day
     end
+    return stats
+  end
 
+  def run_program(day_limit)
+    stats = scraper(day_limit)
     notify = 0
+
     #comparison to sell
     max_sell = stats[0][0]
     (day_limit-1).times do |i|
