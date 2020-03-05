@@ -1,12 +1,12 @@
 general flow:
 
 	
-	- [ ] ask user how urgent is it for him to make the exchange (what varies is how many days of data will be taken into account, if you select urgent, you will have a notification at the first good news there are) (very urgent, urgent, normal, can wait)
+	- [x] ask user how urgent is it for him to make the exchange (what varies is how many days of data will be taken into account, if you select urgent, you will have a notification at the first good news there are) (very urgent, urgent, normal, can wait)
 	- [x] go to webpage https://www.eldolar.info/es-MX/mexico/dia/hoy
 	- [x] grab the best price to sell, the best price to buy and the average for today
 	- [x] do the same from yesterday, the day before, etc (up to 4, 7, 15, 30 days)
-	- [ ] get the trend from various days
-	- [ ] compare buy/sell against average today
+	- [x] get the trend from various days
+	- [x] compare buy/sell against average today
 	- [ ] if favorable send a notification with Twilio API
 
 
