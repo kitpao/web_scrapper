@@ -6,6 +6,8 @@ class Program
     @day_limit = day_limit
   end
 
+  private
+
   def scraper(day_limit)
     day_counter = 0
     stats = []
@@ -83,6 +85,8 @@ class Program
     end
     notify
   end
+
+  public
 
   def run_program(day_limit)
     stats = scraper(day_limit)
