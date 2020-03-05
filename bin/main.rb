@@ -24,8 +24,7 @@ def scraper(day_limit)
     #specify route
     url = 'https://www.eldolar.info/es-MX/mexico/dia/' + ready_date
     unparsed = HTTParty.get(url)
-    parsed = Nokogiri::HTML(unparsed)
-
+    parsed = Nokogiri::HTML(unparsed.body)
 
     #retrieve data
     this_day = []
