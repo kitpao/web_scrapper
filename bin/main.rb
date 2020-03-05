@@ -67,7 +67,7 @@ def scraper(day_limit)
 
   if notify == 0
     time = Time.new
-    puts "There are no news now at " + time.inspect + ". Comparing against the data of the last #{day_limit} days"
+    puts "----There are no news now at " + time.inspect + " comparing against the data of the last #{day_limit} days----"
   end
   #result
   stats
@@ -75,14 +75,19 @@ def scraper(day_limit)
 end
 
 puts "Welcome! This program will inform you when the exchange rate between Mexican pesos and Dollars are at the best! it will check every hour"
+sleep (1)
+puts ""
 check_urgency = true
 
 while check_urgency
   puts "Please type a number and press enter to see how fast would you like to exchange your money:"
+  sleep (1.5)
   puts "1 - Very fast - Quicker notifications but more volatile since it only takes the rates from the last 4 days"
   puts "2 - Fast - Quick notifications and less volatile since it is based on the last 7 days"
   puts "3 - Normal - Slow notifications but stable since it is based on the last 2 weeks"
   puts "4 - Long run - Slower notifications but the most reliable, since it takes the data from the last 30 days"
+  puts ""
+  print "Your answer: "
   begin
     input = gets.chomp.match("[1-4]").string
   rescue
@@ -99,14 +104,15 @@ while check_urgency
   end
 end
 
-puts "Note: to end the program just press ctrl + c and close the window"
+puts "NOTE: to end the program just press ctrl + c and close the window"
+puts "Processing..."
 
 while true
   scraper(day_limit) #program.scrape
   puts "If you would like to change how fast you get positive notifications, please type the new number in the next 10 seconds (1 - Very fast, 2 - Fast, 3 - Normal, 4 - Long run), if not, it will continue working as normal"
 
   begin
-    user_answer = Timeout::timeout(10) do
+    user_answer = Timeout::timeout(15) do
       gets.chomp
     end
   rescue Timeout::Error
