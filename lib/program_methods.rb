@@ -33,10 +33,8 @@ class Program
     return stats
   end
 
-  def run_program(day_limit)
-    stats = scraper(day_limit)
+  def notify_results(stats, day_limit)
     notify = 0
-
     #comparison to sell
     max_sell = stats[0][0]
     (day_limit-1).times do |i|
@@ -70,8 +68,13 @@ class Program
       puts "Current dollar price for buying: #{stats[0][1]}, lowest is #{min_buy}"
       puts "Average price: #{stats[0][2]}"
     end
-    #result
-    stats
+
+    return notify
+  end
+
+  def run_program(day_limit)
+    stats = scraper(day_limit)
+    notify_results(stats, day_limit)
   end
 
 end
