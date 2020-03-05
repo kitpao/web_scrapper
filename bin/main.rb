@@ -1,16 +1,20 @@
 #!/usr/bin/env ruby
 
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'httparty'
 require 'byebug'
 require 'date'
 require 'timeout'
+require_relative '../lib/extra_methods'
+require_relative '../lib/program_methods'
 
 def scraper(day_limit)
 
   stats = []
   day_counter = 0
-  @day_limit = day_limit
+  day_limit = day_limit
 
   while day_counter < day_limit
     #get day for URLs
@@ -75,15 +79,14 @@ def scraper(day_limit)
   stats
 
 end
-
+#welcome and setup
 puts "Welcome! This program will inform you when the exchange rate between Mexican pesos and Dollars are at the best! it will check every hour"
 sleep (1)
 puts ""
 check_urgency = true
-
 while check_urgency
   puts "Please type a number and press enter to see how fast would you like to exchange your money:"
-  sleep (1.5)
+  sleep (1.4)
   puts "1 - Very fast - Quicker notifications but more volatile since it only takes the rates from the last 4 days"
   puts "2 - Fast - Quick notifications and less volatile since it is based on the last 7 days"
   puts "3 - Normal - Slow notifications but stable since it is based on the last 2 weeks"
@@ -97,57 +100,54 @@ while check_urgency
     puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
     sleep(1.2)
   else
-    input = input.to_i
-    day_limit = 4 if input == 1
-    day_limit = 7 if input == 2
-    day_limit = 14 if input == 3
-    day_limit = 30 if input == 4
+    day_limit = choose_days(input)
     check_urgency = false
   end
 end
 
 puts "NOTE: to end the program just press ctrl + c and close the window"
+sleep(1)
 puts "Processing..."
 
 while true
   scraper(day_limit) #program.scrape
-  puts "If you would like to change how fast you get positive notifications, please type the new number in the next 10 seconds (1 - Very fast, 2 - Fast, 3 - Normal, 4 - Long run), if not, it will continue working as normal"
+  puts "If you would like to change how fast you get positive notifications, please type the new number in the next 20 seconds (1 - Very fast, 2 - Fast, 3 - Normal, 4 - Long run), if not, it will continue working as normal"
 
   begin
-    user_answer = Timeout::timeout(15) do
+    user_answer = Timeout::timeout(20) do
       gets.chomp
     end
   rescue Timeout::Error
     puts "No new answer..."
   else
-    input = user_answer.to_i
-    day_limit = 4 if input == 1
-    day_limit = 7 if input == 2
-    day_limit = 14 if input == 3
-    day_limit = 30 if input == 4
-    puts "New parameter received: " + user_answer
+    day_limit = choose_days(user_answer, day_limit)
+    if user_answer.to_i >= 1 && user_answer <= 4
+      puts "New parameter received: " + user_answer
+    else
+      puts "Invalid answer, using previous value #{input}"
+    end
   end
   puts "waiting one hour for new results"
   print "[0%_"
-  sleep(360)
+  sleep(358)
   print "_10%_"
-  sleep(360)
+  sleep(358)
   print "_20%_"
-  sleep(360)
+  sleep(358)
   print "_30%_"
-  sleep(360)
+  sleep(358)
   print "_40%_"
-  sleep(360)
+  sleep(358)
   print "_50%_"
-  sleep(360)
+  sleep(358)
   print "_60%_"
-  sleep(360)
+  sleep(358)
   print "_70%_"
-  sleep(360)
+  sleep(358)
   print "_80%_"
-  sleep(360)
+  sleep(358)
   print "_90%_"
-  sleep(360)
+  sleep(358)
   print "_100%]"
   puts ""
 end
