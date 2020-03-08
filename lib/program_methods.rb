@@ -1,9 +1,19 @@
 # frozen_string_literal: true
 
+# This requires were necessary in this file so the tests could execute
+require 'date'
+require 'nokogiri'
+require 'httparty'
+
 class Program
   attr_reader :day_limit
   def initialize
     @day_limit = day_limit
+  end
+
+  def run_program(day_limit)
+    stats = scraper(day_limit)
+    notify_results(stats, day_limit)
   end
 
   private
@@ -33,24 +43,6 @@ class Program
       stats << this_day
     end
     stats
-  end
-
-  def search_highest(stats, day_limit)
-    # comparison to sell
-    max_sell = stats[0][0]
-    (day_limit - 1).times do |i|
-      max_sell = stats[i][0] if max_sell < stats[i][0]
-    end
-    max_sell
-  end
-
-  def search_lowest(stats, day_limit)
-    # comparison to buy
-    min_buy = stats[0][1]
-    (day_limit - 1).times do |i|
-      min_buy = stats[i][1] if min_buy > stats[i][1]
-    end
-    min_buy
   end
 
   def notify_results(stats, day_limit)
@@ -86,15 +78,21 @@ class Program
     notify
   end
 
-  public
+  def search_highest(stats, day_limit)
+    # comparison to sell
+    max_sell = stats[0][0]
+    (day_limit - 1).times do |i|
+      max_sell = stats[i][0] if max_sell < stats[i][0]
+    end
+    max_sell
+  end
 
-  def run_program(day_limit)
-    # This requires were necessary here so the tests could execute
-    require 'date'
-    require 'nokogiri'
-    require 'httparty'
-
-    stats = scraper(day_limit)
-    notify_results(stats, day_limit)
+  def search_lowest(stats, day_limit)
+    # comparison to buy
+    min_buy = stats[0][1]
+    (day_limit - 1).times do |i|
+      min_buy = stats[i][1] if min_buy > stats[i][1]
+    end
+    min_buy
   end
 end
