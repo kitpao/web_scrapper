@@ -11,6 +11,9 @@
   <p align="center">
       If you want the best exchange rate between Mexican pesos and Dollars...Test this out!!!
     <br />
+    <br />
+    I was inspired in mexican remote workers needs, because most of the time they receive their pay in dollars and the price in this country changes every couple of hours, that's why checking out where and when to change the dollars at the best rate could be a hassle and even a loss of time. So here is the program that finds the best moment to change them for you!
+    <br />
     <a href="https://github.com/kitpao/web_scrapper"><strong>Explore the docs »</strong></a>
     <br />
     <br />
