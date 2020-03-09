@@ -18,8 +18,7 @@ class Program
 
   private
 
-  def scraper(day_limit)
-    day_counter = 0
+  def scraper(day_limit, day_counter = 0)
     stats = []
     while day_counter < day_limit
       # get day for URLs
@@ -37,6 +36,8 @@ class Program
       best_to_sell = parsed.css('[title="Mejor compra"]').text.to_f
       best_to_buy = parsed.css('[title="Mejor venta"]').text.to_f
       average = parsed.css('td.num.xTimes').text.to_f
+      return scraper(day_limit + 1, 1) if best_to_sell == 0.0 && best_to_buy == 0.0
+
       this_day[0] = best_to_sell
       this_day[1] = best_to_buy
       this_day[2] = average
