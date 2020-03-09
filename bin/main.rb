@@ -53,6 +53,7 @@ while true
     day_limit = choose_days(user_answer, day_limit)
     if user_answer.to_i >= 1 && user_answer.to_i <= 4
       puts "New parameter received: " + user_answer
+      input = user_answer
     else
       puts "Invalid answer, using previous value #{input}"
     end
