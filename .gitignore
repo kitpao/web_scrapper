@@ -1,3 +1,5 @@
 .byebug_history
 user.rb
 password.rb
+/node_modules
+.theia

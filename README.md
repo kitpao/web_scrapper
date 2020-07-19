@@ -6,6 +6,16 @@
 
 <!-- PROJECT LOGO -->
 -----> sudo apt install phantomjs
+
+-----> npm install phantomjs
+
+brew install phantomjs
+
+brew tap homebrew/cask
+
+brew cask install phantomjs
+
+----> npm -g install phantomjs-prebuilt <---------------------
 <br />
 <p align="center">
   <h2 align="center"> Ruby Web Scraper </h2>
