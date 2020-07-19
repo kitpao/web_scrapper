@@ -7,15 +7,13 @@
 <!-- PROJECT LOGO -->
 -----> sudo apt install phantomjs
 
------> npm install phantomjs
-
-brew install phantomjs
-
-brew tap homebrew/cask
-
-brew cask install phantomjs
+-----> npm install phantomjs ?
 
 ----> npm -g install phantomjs-prebuilt <---------------------
+
+pip install gTTS
+gtts-cli "hello" -o hello.mp3
+
 <br />
 <p align="center">
   <h2 align="center"> Ruby Web Scraper </h2>
