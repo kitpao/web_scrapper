@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 # This requires were necessary in this file so the tests could execute
+#dir = File.dirname(File.expand_path(__FILE__))
+#$LOAD_PATH.unshift dir + "/../lib"
 require 'date'
 require 'nokogiri'
 require 'httparty'
@@ -9,8 +11,10 @@ require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
 require 'byebug'
+#require "alsa-rawmidi"
 #brew install mpg123
 #mpg123 alarm.wav
+
 
 Capybara.default_driver = :poltergeist
 Capybara.run_server = false
@@ -77,14 +81,15 @@ class Program
     puts "successfull link to code review"
     if page.has_css? '.review-request-table-link'
       puts "YOU FOUND THE LINK!!!!!!!!!!!!"
+      system 'aplay Alarm.wav'
     end
-  
+
     if page.has_css? '.review-request-button'
       puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
     else
       puts "-----------------------------NOTHING FOR NOW---------------------------------------"
     end
-    
+
     return page.has_css? '.review-request-button'
   end
 

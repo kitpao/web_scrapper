@@ -15,3 +15,4 @@ gem 'phantomjs', :require => 'phantomjs/poltergeist'
 #gem 'ruby-audio', '~> 1.6', '>= 1.6.1'
 #gem 'gosu'
 #gem 'streamio-ffmpeg'
+#gem "alsa-rawmidi"
