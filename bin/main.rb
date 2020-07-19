@@ -40,7 +40,7 @@ while true
   print "_80%_"
   sleep(6)
   print "_90%_"
-  sleep(6)
+  sleep(rand(6..60))
   print "_100%]"
   puts ""
 end
