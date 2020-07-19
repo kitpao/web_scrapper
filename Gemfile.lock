@@ -1,43 +1,100 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ast (2.4.0)
-    byebug (11.1.1)
-    httparty (0.18.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    ast (2.4.1)
+    byebug (11.1.3)
+    capybara (3.33.0)
+      addressable
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (~> 1.5)
+      xpath (~> 3.2)
+    cliver (0.3.2)
+    connection_pool (2.2.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    jaro_winkler (1.5.4)
+    logger (1.4.2)
+    mechanize (2.7.6)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0)
+      mime-types (>= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (>= 2.5.2)
+      nokogiri (~> 1.6)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.1009)
+    mime-types-data (3.2020.0512)
+    mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     multi_xml (0.6.0)
-    nokogiri (1.10.9)
+    net-http-digest_auth (1.4.1)
+    net-http-persistent (4.0.0)
+      connection_pool (~> 2.2)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-    parallel (1.19.1)
-    parser (2.7.0.4)
-      ast (~> 2.4.0)
+    ntlm-http (0.1.1)
+    parallel (1.19.2)
+    parser (2.7.1.4)
+      ast (~> 2.4.1)
+    phantomjs (2.1.1.0)
+    poltergeist (1.18.1)
+      capybara (>= 2.1, < 4)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
+    public_suffix (4.0.5)
+    rack (2.2.3)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rainbow (3.0.0)
+    regexp_parser (1.7.1)
     rexml (3.2.4)
-    rubocop (0.80.1)
-      jaro_winkler (~> 1.5.1)
+    rubocop (0.88.0)
       parallel (~> 1.10)
-      parser (>= 2.7.0.1)
+      parser (>= 2.7.1.1)
       rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.7)
       rexml
+      rubocop-ast (>= 0.1.0, < 1.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.7)
+      unicode-display_width (>= 1.4.0, < 2.0)
+    rubocop-ast (0.2.0)
+      parser (>= 2.7.0.1)
     ruby-progressbar (1.10.1)
-    unicode-display_width (1.6.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
+    unicode-display_width (1.7.0)
+    webrobots (0.1.2)
+    websocket-driver (0.7.3)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.5)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   byebug
+  capybara
   httparty
+  logger
+  mechanize
   nokogiri
+  phantomjs
+  poltergeist
   rubocop
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
