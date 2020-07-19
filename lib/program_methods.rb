@@ -81,11 +81,13 @@ class Program
     puts "successfull link to code review"
     if page.has_css? '.review-request-table-link'
       puts "YOU FOUND THE LINK!!!!!!!!!!!!"
-      system 'aplay Alarm.wav'
+      #system 'aplay Alarm.wav'
     end
 
     if page.has_css? '.review-request-button'
       puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+      system 'aplay Alarm.wav'
+      system 'aplay Alarm.wav'
     else
       puts "-----------------------------NOTHING FOR NOW---------------------------------------"
     end
