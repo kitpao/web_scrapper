@@ -5,6 +5,7 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
+-----> sudo apt install phantomjs
 <br />
 <p align="center">
   <h2 align="center"> Ruby Web Scraper </h2>
@@ -69,21 +70,21 @@ You can follow the instructions on the console screen or read them here:
 * first thing you have to do, is select how fast you want to exchange your money:
 
   1 - Very fast - Quicker notifications but more volatile since it only takes the rates from the last 4 days
-  
+
   2 - Fast - Quick notifications and less volatile since it is based on the last 7 days
-  
+
   3 - Normal - Slow notifications but stable since it is based on the last 2 weeks
-  
+
   4 - Long run - Slower notifications but the most reliable, since it takes the data from the last 30 days
-  
+
 * Next, you will get the results depending on your selection, you can get one or more of these posible answers:
 
   a) The price right now is the HIGHEST to sell!
-  
+
   b) The price right now is the LOWEST to buy!
-  
+
   c) There is nothing new
-  
+
 * This will be repeated each hour until the user finishes the program with an exit command (for example Ctrl + c)
 
 ![Product Name Screen Shot][product-example]
