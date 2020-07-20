@@ -86,8 +86,10 @@ class Program
 
     if page.has_css? '.review-request-button'
       puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+      show_wolf()
       system 'aplay Alarm.wav'
       system 'aplay Alarm.wav'
+
     else
       puts "-----------------------------NOTHING FOR NOW---------------------------------------"
     end
@@ -95,4 +97,32 @@ class Program
     return page.has_css? '.review-request-button'
   end
 
+  def show_wolf
+    puts "                              __"
+    puts "                            .d$$b"
+    puts "'                         .' TO$;|"
+    puts "                         /  : TP._;"
+    puts "                        / _.;  :Tb|'"
+    puts "                       /   /   ;j$j"
+    puts "                   _.-'       d$$$$"
+    puts "                 .' ..        d$$$$;"
+    puts "'               /  /P'      d$$$$P. ||"
+    puts "'/             /   '      .d$$$P' |\^'l"
+    puts "'            .'           `T$P^'''''  :"
+    puts "         ._.'      _.'                ;"
+    puts "      `-.-'.-'-' ._.       _.-'    .-'"
+    puts "    `.-' _____  ._              .-'"
+    puts "   -(.g$$$$$$$b.              .'"
+    puts "     ''^^T$$$P^)            .(:"
+    puts "       _/  -'  /.'         /:/;"
+    puts "    ._.'-'`-'  ')/         /;/;"
+    puts " `-.-'..--''   ' /         /  ;"
+    puts ".-' ..--''        -'          :"
+    puts "..--'--.-'         (\     .-(\'"
+    puts "  '..--'              `-\(\/;`"
+    puts "    _.                      :"
+    puts "                            ;`-"
+    puts "                           :`"
+    puts "                           ; "
+  end
 end
