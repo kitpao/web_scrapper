@@ -78,9 +78,9 @@ class Program
     end
     puts "you are in this link:"
     puts page.current_path
-    puts "successfull link to code review"
+    puts "successfull link to #{page.current_path}"
     if page.has_css? '.review-request-table-link'
-      puts "YOU FOUND THE LINK!!!!!!!!!!!!"
+      puts "Found items on the correct page!!!!!!!!!!!!"
       #system 'aplay Alarm.wav'
     end
 
@@ -89,7 +89,6 @@ class Program
       show_wolf()
       system 'aplay Alarm.wav'
       system 'aplay Alarm.wav'
-
     else
       puts "-----------------------------NOTHING FOR NOW---------------------------------------"
     end

@@ -19,28 +19,29 @@ puts "Processing..."
 page = program.start
 while true
   result = program.update(page)
+  total = 120
   puts result
   puts "waiting one minute for new results"
   print "[0%_"
-  sleep(6)
+  sleep(total/10)
   print "_10%_"
-  sleep(6)
+  sleep(total/10)
   print "_20%_"
-  sleep(6)
+  sleep(total/10)
   print "_30%_"
-  sleep(6)
+  sleep(total/10)
   print "_40%_"
-  sleep(6)
+  sleep(total/10)
   print "_50%_"
-  sleep(6)
+  sleep(total/10)
   print "_60%_"
-  sleep(6)
+  sleep(total/10)
   print "_70%_"
-  sleep(6)
+  sleep(total/10)
   print "_80%_"
-  sleep(6)
+  sleep(total/10)
   print "_90%_"
-  sleep(rand(6..60))
+  sleep(total/10 + rand(1..5))
   print "_100%]"
   puts ""
 end
