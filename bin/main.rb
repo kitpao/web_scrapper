@@ -16,12 +16,19 @@ puts "_______________________________________________________________"
 puts "NOTE: to end the program just press ctrl + c and close the window"
 sleep(1)
 puts "Processing..."
+# puts "I WANNA SLEEP ACTIVATED at #{Time.now}, finishing sleep time at #{Time.now + 2205}"
+# sleep(2205)
 page = program.start
+repeated = 0
 while true
-  result = program.update(page)
-  total = 120
-  puts result
-  puts "waiting one minute for new results"
+  repeated = program.update(page, repeated)
+
+  puts "program checked at #{Time.now}"
+  total = 30 + rand(1..60)
+  total = rand(1..5)
+  puts "waiting #{total} seconds for new results"
+  sleep(total)
+=begin
   print "[0%_"
   sleep(total/10)
   print "_10%_"
@@ -41,7 +48,8 @@ while true
   print "_80%_"
   sleep(total/10)
   print "_90%_"
-  sleep(total/10 + rand(1..5))
+  sleep(total/10)
   print "_100%]"
   puts ""
+=end
 end

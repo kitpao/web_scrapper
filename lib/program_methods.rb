@@ -4,9 +4,9 @@
 #dir = File.dirname(File.expand_path(__FILE__))
 #$LOAD_PATH.unshift dir + "/../lib"
 require 'date'
-require 'nokogiri'
-require 'httparty'
-require 'mechanize'
+#require 'nokogiri'
+#require 'httparty'
+#require 'mechanize'
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
@@ -31,8 +31,8 @@ class Program
     page = log_in_with_me()
   end
 
-  def update(login)
-    update = update_page(login)
+  def update(login, repeated)
+    update = update_page(login, repeated)
   end
 
   private
@@ -54,7 +54,7 @@ class Program
     return page
   end
 
-  def update_page(page)
+  def update_page(page, repeated)
     begin
       page.click_on 'Code Review Requests'
     rescue
@@ -84,16 +84,48 @@ class Program
       #system 'aplay Alarm.wav'
     end
 
+    # -------------SELECTION OF ANSWERS AND ALARMS-------------------
     if page.has_css? '.review-request-button'
       puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+#=begin
+      if page.has_selector? '.review-request-button', text: 'Claim'
+        if page.has_selector? '.mb-1 .review-request-iteration-badge', text: 'Re-review'
+          repeated += 1
+          puts "This is a re-review, check manually"
+        else
+          repeated = 0
+          page.click_on 'Claim'
+          puts "I TOOK A FIRST REVIEW :D"
+          system 'aplay Alarm.wav'
+        end
+#=end
+=begin
+      if page.has_selector? '.review-request-project-name', text: 'Bootstrap'
+        repeated += 1
+        puts "IT IS BOOTSTRAP D:"
+      elsif page.has_selector? '.review-request-project-name', text: 'Responsive'
+        repeated += 1
+        puts "IT IS NEWSWEEK D:"
+      elsif page.has_selector? '.review-request-button', text: 'Claim'
+        repeated = 0
+        page.click_on 'Claim'
+        puts "I took the project :D"
+	      system 'aplay Alarm.wav'
+=end
+      else
+        puts "Check, I already took the project before!!!!!!"
+        repeated += 1
+      end
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
       show_wolf()
-      system 'aplay Alarm.wav'
-      system 'aplay Alarm.wav'
+      if repeated <=1
+        system 'aplay Alarm.wav'
+        system 'aplay Alarm.wav'
+      end
     else
       puts "-----------------------------NOTHING FOR NOW---------------------------------------"
     end
-
-    return page.has_css? '.review-request-button'
+    repeated
   end
 
   def show_wolf
