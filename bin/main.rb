@@ -22,9 +22,8 @@ page = program.start
 repeated = 0
 while true
   repeated = program.update(page, repeated)
-
   puts "program checked at #{Time.now}"
-  total = 30 + rand(1..60)
+  #total = 30 + rand(1..60)
   total = rand(1..5)
   puts "waiting #{total} seconds for new results"
   sleep(total)

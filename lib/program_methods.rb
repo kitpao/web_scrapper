@@ -86,8 +86,8 @@ class Program
 
     # -------------SELECTION OF ANSWERS AND ALARMS-------------------
     if page.has_css? '.review-request-button'
-      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-#=begin
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+=begin
       if page.has_selector? '.review-request-button', text: 'Claim'
         if page.has_selector? '.mb-1 .review-request-iteration-badge', text: 'Re-review'
           repeated += 1
@@ -98,27 +98,29 @@ class Program
           puts "I TOOK A FIRST REVIEW :D"
           system 'aplay Alarm.wav'
         end
-#=end
-=begin
-      if page.has_selector? '.review-request-project-name', text: 'Bootstrap'
-        repeated += 1
-        puts "IT IS BOOTSTRAP D:"
-      elsif page.has_selector? '.review-request-project-name', text: 'Responsive'
-        repeated += 1
-        puts "IT IS NEWSWEEK D:"
-      elsif page.has_selector? '.review-request-button', text: 'Claim'
-        repeated = 0
-        page.click_on 'Claim'
-        puts "I took the project :D"
-	      system 'aplay Alarm.wav'
 =end
+#=begin
+      if page.has_selector? '.review-request-button', text: 'Claim'
+        if page.has_selector? '.review-request-project-name', text: 'Bootstrap'
+          repeated += 1
+          puts "IT IS BOOTSTRAP D:"
+        elsif page.has_selector? '.review-request-project-name', text: 'Responsive'
+          repeated += 1
+          puts "IT IS NEWSWEEK D:"
+        else
+          repeated = 0
+          page.click_on 'Claim'
+          puts "I took the project :D"
+	  system 'aplay Alarm.wav'
+	end
+#=end
       else
         puts "Check, I already took the project before!!!!!!"
-        repeated += 1
+        repeated = 0
       end
-      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
       show_wolf()
-      if repeated <=1
+      if repeated <= 1
         system 'aplay Alarm.wav'
         system 'aplay Alarm.wav'
       end
