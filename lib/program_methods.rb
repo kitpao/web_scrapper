@@ -39,14 +39,14 @@ class Program
 
   def log_in_with_me
     # log in
+	puts "loging in"
     url = 'https://dashboard.microverse.org/auth/auth0'
     visit(url)
+puts "loging in"
     puts "I am filling the form"
     fill_in '1-email', with: File.read('user.rb')
-    sleep(2)
     puts "done submitting username"
     fill_in 'password', with: File.read('password.rb')
-    sleep(2)
     puts "done submitting password"
     click_link_or_button 'submit'
     sleep(5)
@@ -56,29 +56,18 @@ class Program
 
   def update_page(page, repeated)
     begin
-      page.click_on 'Code Review Requests'
+      click_on 'Code Review Requests'
     rescue
       sleep(2)
-      page.current_path
-    else
-      puts "no error handling"
-    ensure
-      page.current_path
+      click_on 'Code Review Requests'
     end
-    puts "done with first error handling"
-    begin
-      page.click_on 'Code Review Requests'
-    rescue
-      sleep(2)
-      page.current_path
+    x = page.current_path
+    if x == '/code_review_requests'
+      puts "successfull link to #{x}"
     else
-      puts "no error handling"
-    ensure
-      page.current_path
+      puts "WARNING: you are in #{x}"
     end
-    puts "you are in this link:"
-    puts page.current_path
-    puts "successfull link to #{page.current_path}"
+    
     if page.has_css? '.review-request-table-link'
       puts "Found items on the correct page!!!!!!!!!!!!"
       #system 'aplay Alarm.wav'
@@ -93,8 +82,8 @@ class Program
           repeated += 1
           puts "This is a re-review, check manually"
         else
-          repeated = 0
-          page.click_on 'Claim'
+          #page.click_on 'Claim'
+	  repeated = 0
           puts "I TOOK A FIRST REVIEW :D"
           system 'aplay Alarm.wav'
         end
@@ -107,9 +96,18 @@ class Program
         elsif page.has_selector? '.review-request-project-name', text: 'Responsive'
           repeated += 1
           puts "IT IS NEWSWEEK D:"
+	elsif page.has_selector? '.review-request-project-name', text: 'Enumerable'
+          repeated += 1
+          puts "IT IS ENUMERABLE D:"
+	elsif page.has_selector? '.review-request-project-name', text: 'logic'
+          repeated += 1
+          puts "IT IS game logic of OOP D:"
+	elsif page.has_selector? '.mb-1 .review-request-iteration-badge', text: 'Re-review'
+          repeated += 1
+          puts "This is a re-review, check manually"
         else
-          repeated = 0
-          page.click_on 'Claim'
+          #page.click_on 'Claim'
+	  repeated = 0
           puts "I took the project :D"
 	  system 'aplay Alarm.wav'
 	end
@@ -120,7 +118,7 @@ class Program
       end
       puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
       show_wolf()
-      if repeated <= 1
+      if repeated <= 2
         system 'aplay Alarm.wav'
         system 'aplay Alarm.wav'
       end
