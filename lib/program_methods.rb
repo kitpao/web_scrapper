@@ -16,7 +16,7 @@ require 'byebug'
 #mpg123 alarm.wav
 
 
-Capybara.default_driver = :poltergeist
+Capybara.default_driver = :selenium
 Capybara.run_server = false
 
 class Program
@@ -40,9 +40,9 @@ class Program
   def log_in_with_me
     # log in
 	puts "loging in"
-    url = 'https://dashboard.microverse.org/auth/auth0'
+    url = 'https://dashboard.microverse.org/'
     visit(url)
-puts "loging in"
+    puts "loging in2"
     puts "I am filling the form"
     fill_in '1-email', with: File.read('user.rb')
     puts "done submitting username"
@@ -56,26 +56,28 @@ puts "loging in"
 
   def update_page(page, repeated)
     begin
-      click_on 'Code Review Requests'
+      click_on 'Review Requests'
     rescue
       sleep(2)
-      click_on 'Code Review Requests'
+      click_on 'Review Requests'
     end
     x = page.current_path
-    if x == '/code_review_requests'
+    if x == '/review_requests'
       puts "successfull link to #{x}"
     else
       puts "WARNING: you are in #{x}"
     end
-    
+
     if page.has_css? '.review-request-table-link'
       puts "Found items on the correct page!!!!!!!!!!!!"
-      #system 'aplay Alarm.wav'
+      system 'afplay Alarm.wav'
     end
 
     # -------------SELECTION OF ANSWERS AND ALARMS-------------------
     if page.has_css? '.review-request-button'
       puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+      show_wolf()
+      system 'afplay Alarm.wav'
 =begin
       if page.has_selector? '.review-request-button', text: 'Claim'
         if page.has_selector? '.mb-1 .review-request-iteration-badge', text: 'Re-review'
@@ -85,7 +87,7 @@ puts "loging in"
           #page.click_on 'Claim'
 	  repeated = 0
           puts "I TOOK A FIRST REVIEW :D"
-          system 'aplay Alarm.wav'
+          system 'afplay Alarm.wav'
         end
 =end
 #=begin
@@ -109,7 +111,7 @@ puts "loging in"
           #page.click_on 'Claim'
 	  repeated = 0
           puts "I took the project :D"
-	  system 'aplay Alarm.wav'
+	  system 'afplay Alarm.wav'
 	end
 #=end
       else
@@ -119,8 +121,8 @@ puts "loging in"
       puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOUND!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
       show_wolf()
       if repeated <= 2
-        system 'aplay Alarm.wav'
-        system 'aplay Alarm.wav'
+        system 'afplay Alarm.wav'
+        system 'afplay Alarm.wav'
       end
     else
       puts "-----------------------------NOTHING FOR NOW---------------------------------------"
